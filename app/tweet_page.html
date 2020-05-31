@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tweet Page</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div class="tweet_wrapper">
+      <div class="tweet_page_navigation">
+        <button id="previous_page" type="button">Tweet</button>
+      </div>
+      <div class="selected_tweet">
+        <div class="tweet_account_information">
+          <img src="./images/Avatar.svg" />
+          <div id="text">
+            <h3>coders in hoods</h3>
+            <p>@codersinhoods</p>
+            <div class="tweet_pink_line"></div>
+            <div class="tweet_white_line"></div>
+          </div>
+        </div>
+        <div class="tweet_body">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et facilis
+            eius distinctio modi pariatur perferendis iste. Debitis, laudantium?
+          </p>
+        </div>
+        <div class="tweet_interactions">
+          <button class="interaction" id="likes">
+            <span>Likes</span>
+          </button>
+
+          <button class="interaction" id="retweet">
+            <span>Retweet</span>
+          </button>
+
+          <button class="interaction" id="comments">
+            <span>Comments</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="comments_wrapper">
+        <h3>COMMENTS</h3>
+         
+      </div>
+    </div>
+
+    <script src="./js/singleTweetPage.js" type="module"></script>
+  </body>
+</html>

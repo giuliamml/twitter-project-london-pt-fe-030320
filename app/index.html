@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="./css/styles.css" />
-		<title>Twitter</title>
-	</head>
-	<body></body>
-	<script type="module" src="./js/index.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Default Page</title>
+  </head>
+  <body>
+    <div class="page_wrapper">
+      <div class="account">
+        <div class="account_avatar">
+          <input type="file" name="file" id="img" class="inputfile" />
+          <label for="img" id='img'>Choose a file</label>
+          <img id="avatar" src="./images/camera.svg" />
+        </div>
+        <div class="account_information">
+          <h3>coders in hoods</h3>
+          <p>@codersinhoods</p>
+          <p>london, uk</p>
+          <p id="followers"><span>245 </span>followers</p>
+          <p id="following"><span>132 </span>following</p>
+          <div class="pink_line"></div>
+          <div class="white_line"></div>
+        </div>
+      </div>
+
+      <div class="tweets_wrapper"></div>
+      <div class="create_tweet_btn">
+        <button id="new_tweet">
+          <img src="./images/create new tweet.svg" />
+        </button>
+      </div>
+    </div>
+    <script src="/js/index.js" type="module"></script>
+  </body>
 </html>

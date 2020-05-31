@@ -10,7 +10,7 @@ function style() {
 		.pipe(browserSync.stream());
 }
 
-function watch() {
+function watch() {	
 	browserSync.init({
 		server: {
 			baseDir: "./app/",
