@@ -1,9 +1,9 @@
 import API from "./API.js";
+import Common from "./common.js"
 
-let params = new URL(document.location).searchParams;
-let tweetId = params.get("tweet");
-console.log(tweetId);
+let tweetId = Common.getUrlParam("tweet");
 
+//TODO: select is implicit, you can drop it 
 const selectedTweetUserName = document.querySelector("div#text h3");
 const selectedTweetTag = document.querySelector("div#text p");
 const selectedTweetBody = document.querySelector(".tweet_body p");
@@ -16,7 +16,6 @@ const selectedTweetCommentsCount = document.querySelector(
   "button#comments > span"
 );
 
-API.getTweets().then((tweets) => console.log(tweets));
 
 const getSelectedTweet = (
   url = "http://localhost:3000/tweets?_expand=user&_embed=comments"
@@ -24,7 +23,12 @@ const getSelectedTweet = (
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
+    
+    //   if (null === tweetId)
+    //     return
+
       let selectedTweet = data.filter((tweet) => tweet.id == tweetId);
+      console.log()
       selectedTweetBody.innerText = selectedTweet[0].content;
       selectedTweetUserName.innerText = selectedTweet[0].user.name;
       selectedTweetTag.innerHTML = `@${selectedTweet[0].user.name
@@ -39,7 +43,7 @@ const getSelectedTweet = (
 
       //comments logic
 
-      const getSelectedTweet = (
+      const getRichComments = (
         url = `http://localhost:3000/tweets/${tweetId}/comments?_expand=user`
       ) => {
         fetch(url)
@@ -89,7 +93,8 @@ const getSelectedTweet = (
             });
           });
       };
-      getSelectedTweet();
+      getRichComments();
+
 
       
 
@@ -98,15 +103,16 @@ const getSelectedTweet = (
       let directCommentBtn = document.querySelector("button#comments");
       directCommentBtn.addEventListener("click", (e) => {
         console.log("clicked");
+        e.preventDefault()
 
-        const selectedTweet = document.querySelector("div.selected_tweet");
+        const selectedTweetDiv = document.querySelector("div.selected_tweet");
 
         let directCommentForm = document.createElement("form");
         directCommentForm.className = "direct_comment_form";
         directCommentForm.id = "single_tweet_page";
 
         let directCommentInput = document.createElement("input");
-        directCommentInput.className = "direct_comment_input";
+        directCommentInput.className = "direct_comment_text";
         directCommentInput.setAttribute("type", "text");
         directCommentInput.placeholder = "Your Comment";
         directCommentInput.id = "single_tweet_page";
@@ -127,14 +133,60 @@ const getSelectedTweet = (
           window.location.replace(`/tweet_page.html?tweet=${tweetId}`);
         });
 
+        
+
         directCommentForm.append(
           directCommentInput,
           removeDivBtn,
           directCommentSubmit
         );
 
-        selectedTweet.append(directCommentForm);
+        selectedTweetDiv.append(directCommentForm);
+
+        //comment logic
+        const postComment = (comment) => {
+            return fetch(`http://localhost:3000/tweets/${tweetId}/comments`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(comment),
+            })
+              .then((response) => response.json())
+          
+              .then((data) => data)
+          
+              .catch((error) => console.log(error,"Oops something went wrong!"));
+          };
+                    
+          //create new comment
+          directCommentSubmit.addEventListener("click", (e) => {
+            e.preventDefault()
+
+            const commentBody = directCommentInput.value;
+          
+            let today = new Date();
+            let date =
+              today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+          
+            const newComment = {
+              tweetId : tweetId,
+              userId: userId,
+              content: `${commentBody}`,
+              date: `${date}`,
+            }
+
+            window.location.replace(`/tweet_page.html?tweet=${tweetId}`);
+
+            //update comments count 
+            // let commentsCountUpdate = document.querySelector('button#comments > span')
+            // commentsCountUpdate.value = tweet.comments.length
+           
+            return postComment(newComment);
+          });
       });
+
+      
 
       //back to home button
       const previousPageBtn = document.querySelector("button#previous_page");
@@ -142,6 +194,9 @@ const getSelectedTweet = (
       previousPageBtn.addEventListener("click", (e) =>
         window.location.replace(`/index.html?user=${userId}`)
       );
+
+      
     });
+  
 };
 getSelectedTweet();

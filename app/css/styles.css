@@ -357,10 +357,20 @@ ul {
     order: 4;
   }
 
-  input.direct_comment_input#single_tweet_page {
+  input.direct_comment_text#single_tweet_page {
     background: #000000;
     border-radius: 4px;
     border: 1px solid #faff00;
+    border-radius: 4px;
+    width: 100%;
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #faff00;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    height: 100px;
   }
 
   input.direct_comment_submit#single_tweet_page {
@@ -626,9 +636,9 @@ ul {
   .comment_user_data {
     order: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 30% 40% 1fr;
     grid-template-rows: 1fr;
-    width: 60%;
+    width: 80%;
   }
 
   .comment_user_data img {
@@ -639,8 +649,8 @@ ul {
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 12px;
+    line-height: 14px;
     color: #ffffff;
     align-self: center;
   }

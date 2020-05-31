@@ -1,5 +1,5 @@
 import API from "./API.js";
-import sharedEl from './sharedEl.js'
+import sharedEl from "./sharedEl.js";
 
 // Your code here
 
@@ -24,7 +24,7 @@ API.getTweets().then((tweets) => {
 
     //redirect to tweet page logic
     tweetText.addEventListener("click", () => {
-        window.location.replace(`/tweet_page.html?tweet=${tweet.id}`)
+      window.location.replace(`/tweet_page.html?tweet=${tweet.id}`);
     });
 
     //interactions div
@@ -75,20 +75,34 @@ API.getTweets().then((tweets) => {
     commentBtn.style.backgroundImage = "url('./images/comment.svg')";
     commentBtn.style.backgroundRepeat = "no-repeat";
 
-    commentBtn.addEventListener('click', e => {
-        console.log('clicked')
+    commentBtn.addEventListener("click", (e) => {
+      console.log("clicked");
 
-        let directCommentForm = sharedEl.createDirectForm()
-        tweetDiv.append(directCommentForm)
-       
+      //post comment
+      const postComment = (comment) => {
+        return fetch(`http://localhost:3000/tweets/${tweetId}/comments`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(comment),
+        })
+          .then((response) => response.json())
 
-    })
+          .then((data) => data)
+
+          .catch((error) => console.log(error, "Oops something went wrong!"));
+      };
+
+      
+      let directCommentForm = sharedEl.createDirectForm();
+      tweetDiv.append(directCommentForm);
+    });
 
     tweetInteractions.append(likeBtn, retweetBtn, commentBtn);
     tweetDiv.append(tweetHeading, tweetText, tweetInteractions);
     pageWrapper.append(tweetDiv);
   });
-
 });
 
 let params = new URL(document.location).searchParams;
@@ -123,8 +137,6 @@ const createTweet = () => {
 };
 createTweet();
 
-
-
 const incrementTweetInteraction = (
   id,
   updatedLikesCount,
@@ -154,4 +166,3 @@ const incrementTweetInteraction = (
       return "Oops we couldn't update that!";
     });
 };
-
