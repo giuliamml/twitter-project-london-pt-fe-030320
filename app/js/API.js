@@ -5,6 +5,20 @@ const TWEETS_URL = `${API_ENDPOINT}/tweets?_expand=user&_embed=comments`;
 const getTweets = () => fetch(TWEETS_URL).then((res) => res.json());
 const getUsers = () => fetch(USERS_URL).then((res) => res.json());
 
+//get user's data and render them
+const getUserData = async (id, name, tag) => {
+  fetch(`http://localhost:3000/users/${id}`)
+    .then((response) => response.json())
+    .then((user) => {
+      name.innerHTML = user.name;
+      tag.innerHTML = `@${user.name
+        .split(" ")
+        .join("")
+        .toLowerCase()}`;
+      console.log("filtered user >>>", user);
+    });
+};
+
 //get tweet with rich comments
 const getTweet = async (id) => {
   let url = `http://localhost:3000/tweets/${id}?_expand=user&_embed=comments`;
@@ -47,6 +61,7 @@ const postComment = async (id, comment) => {
 export default {
   getTweets,
   getUsers,
+  getUserData,
   getTweet,
   postComment
 };
