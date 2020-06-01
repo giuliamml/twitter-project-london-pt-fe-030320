@@ -3,24 +3,16 @@ const getUrlParam = (param) => {
   return params.get(param);
 };
 
-//get tweet with rich comments
-const getTweet = async (id) => {
-  let url = `http://localhost:3000/tweets/${id}?_expand=user&_embed=comments`;
+const getCurrentDate = () => {
+  let today = new Date();
+  let date =
+    today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
 
-  let response = await fetch(url);
-  let tweet = await response.json();
-
-  let commentUrl = `http://localhost:3000/tweets/${id}/comments?_expand=user`;
-
-  response = await fetch(commentUrl);
-  let data = await response.json();
-
-  tweet.comments = data;
-
-  return tweet;
+    return date
 };
 
 export default {
   getUrlParam,
-  getTweet,
+  getCurrentDate
 };
+

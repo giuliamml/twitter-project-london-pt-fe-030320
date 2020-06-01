@@ -1,202 +1,138 @@
 import API from "./API.js";
-import Common from "./common.js"
+import Common from "./common.js";
 
-let tweetId = Common.getUrlParam("tweet");
+let id = Common.getUrlParam("tweet");   
 
-//TODO: select is implicit, you can drop it 
-const selectedTweetUserName = document.querySelector("div#text h3");
-const selectedTweetTag = document.querySelector("div#text p");
-const selectedTweetBody = document.querySelector(".tweet_body p");
+//simplified
+const tweetBody = document.querySelector(".tweet_body p");
+const tweetUserName = document.querySelector("div#text h3");
+const tweetTag = document.querySelector("div#text p");
+const likesCount = document.querySelector("button#likes > span");
+const retweetCount = document.querySelector("button#retweet > span");
+const commentCount = document.querySelector("button#comments > span");
 
-const selectedTweetLikesCount = document.querySelector("button#likes > span");
-const selectedTweetRetweetsCount = document.querySelector(
-  "button#retweet > span"
-);
-const selectedTweetCommentsCount = document.querySelector(
-  "button#comments > span"
-);
+const main = async () => {
+  let tweet = await API.getTweet(id);
 
+  tweetBody.innerText = tweet.content;
+  tweetUserName.innerText = tweet.user.name;
+  tweetTag.innerHTML = `@${tweet.user.name
+    .split(" ")
+    .join("")
+    .toLowerCase()}`;
 
-const getSelectedTweet = (
-  url = "http://localhost:3000/tweets?_expand=user&_embed=comments"
-) => {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-    
-    //   if (null === tweetId)
-    //     return
+  likesCount.innerText = `${tweet.likes}`;
+  retweetCount.innerText = `${tweet.retweets}`;
+  commentCount.innerText = `${tweet.comments.length}`;
 
-      let selectedTweet = data.filter((tweet) => tweet.id == tweetId);
-      console.log()
-      selectedTweetBody.innerText = selectedTweet[0].content;
-      selectedTweetUserName.innerText = selectedTweet[0].user.name;
-      selectedTweetTag.innerHTML = `@${selectedTweet[0].user.name
-        .split(" ")
-        .join("")
-        .toLowerCase()}`;
+  let commentsWrapper = document.querySelector("div.comments_wrapper");
+  tweet.comments.forEach((comment) => {
+    let commentDiv = document.createElement("div");
+    commentDiv.className = "comment_div";
 
-      selectedTweetLikesCount.innerText = `${selectedTweet[0].likes}`;
-      selectedTweetRetweetsCount.innerText = `${selectedTweet[0].retweets}`;
-      selectedTweetCommentsCount.innerText = `${selectedTweet[0].comments.length}`;
-      console.log("filtered user >>>", selectedTweet);
+    let commentUserData = document.createElement("div");
+    commentUserData.className = "comment_user_data";
 
-      //comments logic
+    let commentUserAvatar = document.createElement("img");
+    commentUserAvatar.className = "comment_user_avatar";
+    commentUserAvatar.src = "./images/Avatar.svg";
 
-      const getRichComments = (
-        url = `http://localhost:3000/tweets/${tweetId}/comments?_expand=user`
-      ) => {
-        fetch(url)
-          .then((response) => response.json())
-          .then((richComments) => {
-            console.log("comment data", richComments);
-            let tweetCommentsArray = richComments;
-            console.log(tweetCommentsArray);
-            tweetCommentsArray.forEach((comment) => {
-              let commentsWrapper = document.querySelector("div.comments_wrapper");
-      
-              let commentDiv = document.createElement("div");
-              commentDiv.className = "comment_div";
-              let commentUserData = document.createElement("div");
-              commentUserData.className = "comment_user_data";
-              let commentUserAvatar = document.createElement("img");
-              commentUserAvatar.className = "comment_user_avatar";
-              commentUserAvatar.src = "./images/Avatar.svg";
-              //add username and avatar logic
-              let commentUserName = document.createElement("p");
-              commentUserName.className = "comment_username";
-              commentUserName.innerText = `${comment.user.name}`;
-              let commentUserTagName = document.createElement("p");
-              commentUserTagName.className = "comment_tagname";
-              commentUserTagName.innerText = `@${comment.user.name
-                .split(" ")
-                .join("")
-                .toLowerCase()}`;
-              let commentBody = document.createElement("p");
-              commentBody.className = "comment_body";
-              commentBody.innerText = `${comment.content}`;
-      
-              let pinkLine = document.createElement("div");
-              pinkLine.className = "pink_line";
-              let whiteLine = document.createElement("div");
-              whiteLine.className = "white_line";
-      
-              commentUserData.append(
-                commentUserAvatar,
-                commentUserName,
-                commentUserTagName,
-                pinkLine,
-                whiteLine
-              );
-              commentDiv.append(commentUserData, commentBody);
-              commentsWrapper.append(commentDiv);
-            });
-          });
-      };
-      getRichComments();
+    //add username and avatar logic
+    let commentUserName = document.createElement("p");
+    commentUserName.className = "comment_username";
+    commentUserName.innerText = `${comment.user.name}`;
+    let commentUserTagName = document.createElement("p");
+    commentUserTagName.className = "comment_tagname";
+    commentUserTagName.innerText = `@${comment.user.name
+      .split(" ")
+      .join("")
+      .toLowerCase()}`;
+    let commentBody = document.createElement("p");
+    commentBody.className = "comment_body";
+    commentBody.innerText = `${comment.content}`;
 
+    let pinkLine = document.createElement("div");
+    pinkLine.className = "pink_line";
+    let whiteLine = document.createElement("div");
+    whiteLine.className = "white_line";
 
-      
+    commentUserData.append(
+      commentUserAvatar,
+      commentUserName,
+      commentUserTagName,
+      pinkLine,
+      whiteLine
+    );
+    commentDiv.append(commentUserData, commentBody);
+    commentsWrapper.append(commentDiv);
+  });
 
- 
-      //direct comment logic
-      let directCommentBtn = document.querySelector("button#comments");
-      directCommentBtn.addEventListener("click", (e) => {
-        console.log("clicked");
-        e.preventDefault()
+  //direct comment logic
+  let commentBtn = document.querySelector("button#comments");
+  commentBtn.addEventListener("click", (e) => {
+    console.log("clicked");
+    e.preventDefault();
 
-        const selectedTweetDiv = document.querySelector("div.selected_tweet");
+    const tweetDiv = document.querySelector("div.selected_tweet");
 
-        let directCommentForm = document.createElement("form");
-        directCommentForm.className = "direct_comment_form";
-        directCommentForm.id = "single_tweet_page";
+    let commentForm = document.createElement("form");
+    commentForm.className = "direct_comment_form";
+    commentForm.id = "single_tweet_page";
 
-        let directCommentInput = document.createElement("input");
-        directCommentInput.className = "direct_comment_text";
-        directCommentInput.setAttribute("type", "text");
-        directCommentInput.placeholder = "Your Comment";
-        directCommentInput.id = "single_tweet_page";
+    let commentInput = document.createElement("input");
+    commentInput.className = "direct_comment_text";
+    commentInput.setAttribute("type", "text");
+    commentInput.placeholder = "Your Comment";
+    commentInput.id = "single_tweet_page";
 
-        let removeDivBtn = document.createElement("button");
-        removeDivBtn.className = "remove_div_btn";
-        removeDivBtn.style.backgroundImage = "url('./images/Arrow 1.svg')";
-        removeDivBtn.style.backgroundRepeat = "no-repeat";
+    let backBtn = document.createElement("button");
+    backBtn.className = "remove_div_btn";
+    backBtn.style.backgroundImage = "url('./images/Arrow 1.svg')";
+    backBtn.style.backgroundRepeat = "no-repeat";
 
-        let directCommentSubmit = document.createElement("input");
-        directCommentSubmit.className = "direct_comment_submit";
-        directCommentSubmit.setAttribute("type", "submit");
-        directCommentSubmit.id = "single_tweet_page";
-        directCommentSubmit.value = "Tweet";
+    let commentSubmit = document.createElement("input");
+    commentSubmit.className = "direct_comment_submit";
+    commentSubmit.setAttribute("type", "submit");
+    commentSubmit.id = "single_tweet_page";
+    commentSubmit.value = "Tweet";
 
-        removeDivBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          window.location.replace(`/tweet_page.html?tweet=${tweetId}`);
-        });
-
-        
-
-        directCommentForm.append(
-          directCommentInput,
-          removeDivBtn,
-          directCommentSubmit
-        );
-
-        selectedTweetDiv.append(directCommentForm);
-
-        //comment logic
-        const postComment = (comment) => {
-            return fetch(`http://localhost:3000/tweets/${tweetId}/comments`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(comment),
-            })
-              .then((response) => response.json())
-          
-              .then((data) => data)
-          
-              .catch((error) => console.log(error,"Oops something went wrong!"));
-          };
-                    
-          //create new comment
-          directCommentSubmit.addEventListener("click", (e) => {
-            e.preventDefault()
-
-            const commentBody = directCommentInput.value;
-          
-            let today = new Date();
-            let date =
-              today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
-          
-            const newComment = {
-              tweetId : tweetId,
-              userId: userId,
-              content: `${commentBody}`,
-              date: `${date}`,
-            }
-
-            window.location.replace(`/tweet_page.html?tweet=${tweetId}`);
-
-            //update comments count 
-            // let commentsCountUpdate = document.querySelector('button#comments > span')
-            // commentsCountUpdate.value = tweet.comments.length
-           
-            return postComment(newComment);
-          });
-      });
-
-      
-
-      //back to home button
-      const previousPageBtn = document.querySelector("button#previous_page");
-      let userId = selectedTweet[0].userId;
-      previousPageBtn.addEventListener("click", (e) =>
-        window.location.replace(`/index.html?user=${userId}`)
-      );
-
-      
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.replace(`/tweet_page.html?tweet=${tweetId}`);
     });
-  
+
+    commentForm.append(
+      commentInput,
+      backBtn,
+      commentSubmit
+    );
+
+    tweetDiv.append(commentForm);
+
+    //create new comment
+    commentSubmit.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const newComment = {
+        tweetId: id,
+        userId: userId,
+        content: commentInput.value,
+        date: Common.getCurrentDate(),
+      };
+
+      await API.postComment(id, newComment);
+
+      window.location.replace(`/tweet_page.html?tweet=${id}`);
+
+    });
+  });
+
+  //back to home button
+  const previousPageBtn = document.querySelector("button#previous_page");
+  let userId = tweet.userId;
+  previousPageBtn.addEventListener("click", (e) =>
+    window.location.replace(`/index.html?user=${userId}`)
+  );
 };
-getSelectedTweet();
+
+main();
