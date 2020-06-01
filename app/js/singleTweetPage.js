@@ -3,7 +3,7 @@ import Common from "./common.js";
 
 let id = Common.getUrlParam("tweet");   
 
-//simplified
+const tweetAvatar = document.querySelector('img#tweet_avatar')
 const tweetBody = document.querySelector(".tweet_body p");
 const tweetUserName = document.querySelector("div#text h3");
 const tweetTag = document.querySelector("div#text p");
@@ -13,8 +13,9 @@ const commentCount = document.querySelector("button#comments > span");
 
 const main = async () => {
   let tweet = await API.getTweet(id);
-
+console.log(tweet)
   tweetBody.innerText = tweet.content;
+  tweetAvatar.src = tweet.user.avatar_url
   tweetUserName.innerText = tweet.user.name;
   tweetTag.innerHTML = `@${tweet.user.name
     .split(" ")
@@ -27,6 +28,9 @@ const main = async () => {
 
   let commentsWrapper = document.querySelector("div.comments_wrapper");
   tweet.comments.forEach((comment) => {
+
+    console.log(comment.user.avatar_url)
+
     let commentDiv = document.createElement("div");
     commentDiv.className = "comment_div";
 
@@ -35,18 +39,19 @@ const main = async () => {
 
     let commentUserAvatar = document.createElement("img");
     commentUserAvatar.className = "comment_user_avatar";
-    commentUserAvatar.src = "./images/Avatar.svg";
+    commentUserAvatar.src = `${comment.user.avatar_url}`;
 
-    //add username and avatar logic
     let commentUserName = document.createElement("p");
     commentUserName.className = "comment_username";
     commentUserName.innerText = `${comment.user.name}`;
+
     let commentUserTagName = document.createElement("p");
     commentUserTagName.className = "comment_tagname";
     commentUserTagName.innerText = `@${comment.user.name
       .split(" ")
       .join("")
       .toLowerCase()}`;
+      
     let commentBody = document.createElement("p");
     commentBody.className = "comment_body";
     commentBody.innerText = `${comment.content}`;

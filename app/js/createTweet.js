@@ -1,44 +1,26 @@
-let params = new URL(document.location).searchParams;
-let userId = params.get("user");
-console.log(userId);
+import API from "./API.js";
+import Common from "./common.js";
 
-//post tweet (not comment)
-const postComment = (comment) => {
-  return fetch("http://localhost:3000/tweets", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(comment),
-  })
-    .then((response) => response.json())
+let userId = Common.getUrlParam("user");
 
-    .then((data) => data)
-
-    .catch((error) => console.log("Oops something went wrong!"));
-};
-
-const submitCommentBtn = document.querySelector(
+const submitBtn = document.querySelector(
   ".create_tweet_navigation button:nth-child(2)"
 );
 
-//create new tweet (not comment)
-submitCommentBtn.addEventListener("click", (e) => {
-  const newCommentBody = document.querySelector("input#create").value;
-
-  let today = new Date();
-  let date =
-    today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+//create new tweet event
+submitBtn.addEventListener("click", (e) => {
+  const newTweetBody = document.querySelector("input#create").value;
 
   const newComment = {
-    userId: parseInt(`${userId}`),
-    content: `${newCommentBody}`,
+    userId: parseInt(userId),
+    content: `${newTweetBody}`,
     likes: 0,
     retweets: 0,
-    date: `${date}`,
+    date: Common.getCurrentDate(),
   };
+
   window.location.replace(`/index.html?user=${userId}`);
-  return postComment(newComment);
+  return API.postTweet(newComment);
 });
 
 //previous page logic
@@ -46,7 +28,3 @@ let previousPageBtn = document.querySelector("button#previous_page_btn");
 previousPageBtn.addEventListener("click", (e) => {
   window.location.replace(`/index.html?user=${userId}`);
 });
-
-export default {
-  postComment,
-};

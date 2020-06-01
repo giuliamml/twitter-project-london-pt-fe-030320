@@ -56,12 +56,26 @@ const postComment = async (id, comment) => {
   return data;
 };
 
+const postTweet = (tweet) => {
+  return fetch("http://localhost:3000/tweets", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(tweet),
+  })
+    .then((response) => response.json())
 
+    .then((data) => data)
+
+    .catch((error) => console.log("Oops something went wrong!"));
+};
 
 export default {
   getTweets,
   getUsers,
   getUserData,
   getTweet,
-  postComment
+  postComment,
+  postTweet
 };

@@ -78,13 +78,14 @@ API.getTweets().then((tweets) => {
     //comment button
     let commentBtn = document.createElement("button");
     commentBtn.className = "comment_button";
-    commentBtn.innerText = `${tweet.comments.length}`;
+    // commentBtn.innerText = `${tweet.comments.length}`;
     // not updating right amount, fetch on different db
     commentBtn.style.backgroundImage = "url('./images/comment.svg')";
     commentBtn.style.backgroundRepeat = "no-repeat";
 
     commentBtn.addEventListener("click", (e) => {
       e.preventDefault();
+
       //create comment form
       let directCommentForm = sharedEl.createDirectForm();
       tweetDiv.append(directCommentForm);
@@ -105,6 +106,7 @@ API.getTweets().then((tweets) => {
         //post comment
         await API.postComment(tweet.id, newComment);
         window.location.replace(`index.html?user=${userId}`);
+       
       });
     });
 
@@ -130,6 +132,7 @@ const createTweet = () => {
 };
 createTweet();
 
+//increment interactions count
 const incrementTweetInteraction = (
   id,
   updatedLikesCount,
