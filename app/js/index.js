@@ -105,7 +105,7 @@ API.getTweets().then((tweets) => {
 
         //post comment
         await API.postComment(tweet.id, newComment);
-        window.location.replace(`index.html?user=${userId}`);
+        window.location.replace(`home.html?user=${userId}`);
        
       });
     });

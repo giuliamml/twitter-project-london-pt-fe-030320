@@ -136,7 +136,7 @@ console.log(tweet)
   const previousPageBtn = document.querySelector("button#previous_page");
   let userId = tweet.userId;
   previousPageBtn.addEventListener("click", (e) =>
-    window.location.replace(`/index.html?user=${userId}`)
+    window.location.replace(`/home.html?user=${userId}`)
   );
 };
 

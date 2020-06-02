@@ -31,8 +31,8 @@
       "id": 1,
       "userId": 1,
       "content": "Lip-Sync for Your Life",
-      "likes": "20",
-      "retweets": "61",
+      "likes": "22",
+      "retweets": "63",
       "date": "26/05/2020"
     },
     {
@@ -315,6 +315,22 @@
       "retweets": 0,
       "date": "29/5/2020",
       "id": 36
+    },
+    {
+      "userId": 1,
+      "content": "this is my tweet",
+      "likes": "1",
+      "retweets": 0,
+      "date": "1/6/2020",
+      "id": 37
+    },
+    {
+      "userId": "1",
+      "content": "another tweet",
+      "likes": 0,
+      "retweets": 0,
+      "date": "1/6/2020",
+      "id": 38
     }
   ],
   "comments": [
@@ -702,6 +718,48 @@
       "content": "hiya",
       "date": "31/5/2020",
       "id": 55
+    },
+    {
+      "tweetId": "1",
+      "userId": 2,
+      "content": "cdewwjnsdkjnkjd",
+      "date": "16/05/2020",
+      "id": 56
+    },
+    {
+      "tweetId": "1",
+      "userId": 1,
+      "content": "1234",
+      "date": "1/6/2020",
+      "id": 57
+    },
+    {
+      "tweetId": "1",
+      "userId": "1",
+      "content": "",
+      "date": "1/6/2020",
+      "id": 58
+    },
+    {
+      "tweetId": "1",
+      "userId": "1",
+      "content": "",
+      "date": "1/6/2020",
+      "id": 59
+    },
+    {
+      "tweetId": "1",
+      "userId": "1",
+      "content": "",
+      "date": "1/6/2020",
+      "id": 60
+    },
+    {
+      "tweetId": "1",
+      "userId": "1",
+      "content": "here's my comment",
+      "date": "1/6/2020",
+      "id": 61
     }
   ]
 }

@@ -26,5 +26,5 @@ submitBtn.addEventListener("click", (e) => {
 //previous page logic
 let previousPageBtn = document.querySelector("button#previous_page_btn");
 previousPageBtn.addEventListener("click", (e) => {
-  window.location.replace(`/index.html?user=${userId}`);
+  window.location.replace(`/home.html?user=${userId}`);
 });

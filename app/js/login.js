@@ -13,7 +13,7 @@ const getData = async (url = "http://localhost:3000/users") => {
           let userObj = data.find((el) => el.name === userNameInput);
           console.log(">>>>", userObj.id);
           let id = userObj.id;
-          return window.location.replace(`/index.html?user=${id}`);
+          return window.location.replace(`/home.html?user=${id}`);
         } else {
           return console.log("not logged in");
         }
