@@ -31,306 +31,193 @@
       "id": 1,
       "userId": 1,
       "content": "Lip-Sync for Your Life",
-      "likes": "22",
-      "retweets": "63",
+      "likes": 94,
+      "retweets": 39,
       "date": "26/05/2020"
     },
     {
       "id": 2,
       "userId": 1,
       "content": "Chuck Norris doesn't delete files, he blows them away.",
-      "likes": "20",
-      "retweets": "55",
+      "likes": 137,
+      "retweets": 47,
       "date": "26/05/2020"
     },
     {
       "id": 3,
       "userId": 1,
       "content": "I'll index the 1080p PNG port, that should bandwidth the SAS array!",
-      "likes": "18",
-      "retweets": "39",
+      "likes": 197,
+      "retweets": 32,
       "date": "1/05/2020"
     },
     {
       "id": 4,
       "userId": 1,
       "content": "Anonymous methods and anonymous types are really all called Chuck Norris. They just don't like to boast.",
-      "likes": "18",
-      "retweets": "50",
+      "likes": 62,
+      "retweets": 42,
       "date": "13/05/2020"
     },
     {
       "id": 5,
       "userId": 1,
       "content": "Let the music play",
-      "likes": "17",
-      "retweets": "58",
+      "likes": 75,
+      "retweets": 50,
       "date": "18/05/2020"
     },
     {
       "id": 6,
       "userId": 1,
       "content": "The programs that Chuck Norris writes don't have version numbers because he only writes them once. If a user reports a bug or has a feature request they don't live to see the sun set.",
-      "likes": "17",
-      "retweets": "58",
+      "likes": 127,
+      "retweets": 50,
       "date": "12/05/2020"
     },
     {
       "id": 7,
       "userId": 1,
       "content": "Harry, is that bag smiling?",
-      "likes": "17",
-      "retweets": "45",
+      "likes": 77,
+      "retweets": 38,
       "date": "30/05/2020"
     },
     {
       "id": 8,
       "userId": 1,
       "content": "Go home and drink, grandpa.",
-      "likes": "18",
-      "retweets": "55",
+      "likes": 53,
+      "retweets": 48,
       "date": "24/05/2020"
     },
     {
       "id": 9,
       "userId": 1,
       "content": "When Chuck Norris points to null, null quakes in fear.",
-      "likes": "18",
-      "retweets": "28",
+      "likes": 4,
+      "retweets": 21,
       "date": "16/05/2020"
     },
     {
       "id": 10,
       "userId": 1,
       "content": "It's fine, everything is fine. Theres an infinite number of realities Morty and in a few dozen of those I got lucky and turned everything back to normal.",
-      "likes": "17",
-      "retweets": "10",
+      "likes": 136,
+      "retweets": 3,
       "date": "16/05/2020"
     },
     {
       "id": 11,
       "userId": 2,
       "content": "A Jedi uses the Force for knowledge and defense, never for attack.",
-      "likes": "17",
-      "retweets": "53",
+      "likes": 57,
+      "retweets": 46,
       "date": "21/05/2020"
     },
     {
       "id": 12,
       "userId": 2,
       "content": "Don't F*ck It Up",
-      "likes": "17",
-      "retweets": "17",
+      "likes": 4,
+      "retweets": 10,
       "date": "17/05/2020"
     },
     {
       "id": 13,
       "userId": 3,
       "content": "Who's the more foolish; the fool, or the fool who follows him?",
-      "likes": "17",
-      "retweets": "18",
+      "likes": 200,
+      "retweets": 11,
       "date": "10/05/2020"
     },
     {
       "id": 14,
       "userId": 3,
       "content": "Never trust anything that can think for itself if you can't see where it keeps its brain.",
-      "likes": "17",
-      "retweets": "47",
+      "likes": 21,
+      "retweets": 40,
       "date": "30/05/2020"
     },
     {
       "id": 15,
       "userId": 4,
       "content": "If we reboot the circuit, we can get to the GB protocol through the solid state USB card!",
-      "likes": "17",
-      "retweets": "23",
+      "likes": 42,
+      "retweets": 16,
       "date": "26/05/2020"
     },
     {
       "id": 16,
       "userId": 4,
       "content": "Sissy That Walk",
-      "likes": "17",
-      "retweets": "49",
+      "likes": 63,
+      "retweets": 42,
       "date": "26/05/2020"
     },
     {
       "id": 17,
       "userId": 4,
       "content": "That gum you like is going to come back in style.",
-      "likes": "17",
-      "retweets": "35",
+      "likes": 107,
+      "retweets": 28,
       "date": "26/05/2020"
     },
     {
       "id": 18,
       "userId": 5,
       "content": "Chuck Norris' programs occupy 150% of CPU, even when they are not executing.",
-      "likes": "17",
-      "retweets": "24",
+      "likes": 92,
+      "retweets": 17,
       "date": "17/05/2020"
     },
     {
       "id": 19,
       "userId": 5,
       "content": "Forty-two to twenty-one! Like the turkey, Ross is done!",
-      "likes": "17",
-      "retweets": "12",
+      "likes": 115,
+      "retweets": 5,
       "date": "24/05/2020"
     },
     {
       "id": 20,
       "userId": 5,
       "content": "You know, this is — excuse me — a damn fine cup of coffee!",
-      "likes": "17",
-      "retweets": "29",
+      "likes": 194,
+      "retweets": 22,
       "date": "11/05/2020"
     },
     {
       "id": 21,
       "userId": 5,
       "content": "COOPER, YOU REMIND ME TODAY OF A SMALL MEXICAN CHIHUAHUA.",
-      "likes": "17",
-      "retweets": "28",
+      "likes": 157,
+      "retweets": 21,
       "date": "16/05/2020"
     },
     {
       "id": 22,
       "userId": 5,
       "content": "If you want to know what a man’s like, take a good look at how he treats his inferiors, not his equals.",
-      "likes": "17",
-      "retweets": "55",
+      "likes": 75,
+      "retweets": 48,
       "date": "1/05/2020"
     },
     {
       "id": 23,
       "userId": 5,
       "content": "Chuck Norris doesn't have performance bottlenecks. He just makes the universe wait its turn.",
-      "likes": "17",
-      "retweets": "43",
+      "likes": 62,
+      "retweets": 36,
       "date": "6/05/2020"
     },
     {
       "id": 24,
       "userId": 5,
       "content": "Through the darkness of future's past, the magician longs to see. One chants out between two worlds... \"Fire... walk with me.\"",
-      "likes": "17",
-      "retweets": "27",
+      "likes": 2,
+      "retweets": 20,
       "date": "14/05/2020"
-    },
-    {
-      "userId": 2,
-      "content": "hello",
-      "likes": "17",
-      "retweets": "8",
-      "date": 0,
-      "id": 25
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "17",
-      "retweets": "8",
-      "date": 0,
-      "id": 26
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "17",
-      "retweets": "7",
-      "date": 0,
-      "id": 27
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "17",
-      "retweets": "7",
-      "date": 0,
-      "id": 28
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "18",
-      "retweets": "7",
-      "date": 0,
-      "id": 29
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "17",
-      "retweets": "7",
-      "date": 0,
-      "id": 30
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "17",
-      "retweets": "7",
-      "date": 0,
-      "id": 31
-    },
-    {
-      "userId": "2",
-      "content": "",
-      "likes": "17",
-      "retweets": "7",
-      "date": 0,
-      "id": 32
-    },
-    {
-      "userId": "2",
-      "content": "hello again",
-      "likes": "17",
-      "retweets": "7",
-      "date": "26/5/2020",
-      "id": 33
-    },
-    {
-      "userId": 1,
-      "content": "Hello from here",
-      "likes": 0,
-      "retweets": 0,
-      "date": "29/5/2020",
-      "id": 34
-    },
-    {
-      "userId": 1,
-      "content": "hiya",
-      "likes": 0,
-      "retweets": 0,
-      "date": "29/5/2020",
-      "comments": {},
-      "id": 35
-    },
-    {
-      "userId": 1,
-      "content": "hello again",
-      "likes": 0,
-      "retweets": 0,
-      "date": "29/5/2020",
-      "id": 36
-    },
-    {
-      "userId": 1,
-      "content": "this is my tweet",
-      "likes": "1",
-      "retweets": 0,
-      "date": "1/6/2020",
-      "id": 37
-    },
-    {
-      "userId": "1",
-      "content": "another tweet",
-      "likes": 0,
-      "retweets": 0,
-      "date": "1/6/2020",
-      "id": 38
     }
   ],
   "comments": [
@@ -662,104 +549,6 @@
       "tweetId": 23,
       "content": "Sissy That Walk",
       "date": "19/05/2020"
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "here's my comment",
-      "date": "31/5/2020",
-      "id": 48
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "another comment",
-      "date": "31/5/2020",
-      "id": 49
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "my comment",
-      "date": "31/5/2020",
-      "id": 50
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "comment of mine ",
-      "date": "31/5/2020",
-      "id": 51
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "hello ",
-      "date": "31/5/2020",
-      "id": 52
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "comment ",
-      "date": "31/5/2020",
-      "id": 53
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "hello again",
-      "date": "31/5/2020",
-      "id": 54
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "hiya",
-      "date": "31/5/2020",
-      "id": 55
-    },
-    {
-      "tweetId": "1",
-      "userId": 2,
-      "content": "cdewwjnsdkjnkjd",
-      "date": "16/05/2020",
-      "id": 56
-    },
-    {
-      "tweetId": "1",
-      "userId": 1,
-      "content": "1234",
-      "date": "1/6/2020",
-      "id": 57
-    },
-    {
-      "tweetId": "1",
-      "userId": "1",
-      "content": "",
-      "date": "1/6/2020",
-      "id": 58
-    },
-    {
-      "tweetId": "1",
-      "userId": "1",
-      "content": "",
-      "date": "1/6/2020",
-      "id": 59
-    },
-    {
-      "tweetId": "1",
-      "userId": "1",
-      "content": "",
-      "date": "1/6/2020",
-      "id": 60
-    },
-    {
-      "tweetId": "1",
-      "userId": "1",
-      "content": "here's my comment",
-      "date": "1/6/2020",
-      "id": 61
     }
   ]
 }
